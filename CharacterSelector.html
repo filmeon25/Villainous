@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Character Selector</title>
+
+    <!--Funzione per cambiare immagine-->
+    <script type="text/javascript">
+        function CambiaPersonaggio(b) {
+            x = (parseInt(document.getElementById('Numero').innerHTML) + b + 12) % 12;
+            document.getElementById('Personaggio').src =
+                'Immagini/Personaggio' + x + '.jpg';
+            document.getElementById('Numero').innerHTML = x;
+        }
+    </script>
+
+    <!--Personaggi Centrati Alla Pagina E Cambiate Le Dimensioni-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .center {
+            display: block;
+            margin: auto;
+        }
+
+        .fit {
+            max-width: 100vw;
+            max-height: 100vh;
+        }
+    </style>
+</head>
+
+<body style="background-color: black; color:goldenrod">
+   <!--Pulsante Per Selezionare-->
+    <div id="Seleziona" style="position: absolute; top: 2vh; text-align:center; 
+        left: 50vw; transform: translate(-50%,-10%); background-color:white">
+        Select Character
+    </div>
+
+    <!--Pulstante Freccia Sinistra-->
+    <div class="container" id="LeftArrow" style="position:absolute;
+        top: 50vh; left: 2vh; text-align:center"
+         onclick="CambiaPersonaggio(-1)">
+        &#8592;
+    </div>
+
+
+    <!--Immagine Personaggi-->
+        <div style="text-align:center">
+        <img class="center fit" src="Immagini/Personaggio0.jpg" id="Personaggio" />
+    </div>
+    <!--Pulsante Freccia Destra-->
+    <div class="container" id="RightArrow" style="position:absolute;
+         top: 50vh; right: 2vw; text-align:center"
+         onclick="CambiaPersonaggio(1)">
+        &#8594;
+    </div>
+
+    <p hidden style="color:white" id="Numero">0</p>
+</body>
+</html>
